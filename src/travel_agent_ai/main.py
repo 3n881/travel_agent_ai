@@ -50,4 +50,6 @@ def run():
         TravelAgentAi().crew().kickoff(inputs=inputs)
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
-
+        
+if __name__ == "__main__":
+    run()
