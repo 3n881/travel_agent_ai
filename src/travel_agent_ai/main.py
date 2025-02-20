@@ -13,19 +13,11 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 # Replace with inputs you want to test with, it will automatically
 # interpolate any tasks and agents information
 
-def get_user_input(prompt, allow_empty=False):
-    """Helper function to get user input with validation."""
-    while True:
-        value = input(prompt).strip()
-        if value or allow_empty:
-            return value
-        print("This field cannot be empty. Please try again.")
-
 def run():
     """
     Run the crew with either interactive user input or webhook inputs.
-    
     """
+    
     
     inputs = {
             "source_location": "New York, USA",
@@ -46,10 +38,9 @@ def run():
             'date': datetime.now().isoformat()
         
     }
-    try:
-        TravelAgentAi().crew().kickoff(inputs=inputs)
-    except Exception as e:
-        raise Exception(f"An error occurred while running the crew: {e}")
-        
+    
+    result = TravelAgentAi().crew().kickoff(inputs=inputs)
+    print(result)
+
 if __name__ == "__main__":
     run()
